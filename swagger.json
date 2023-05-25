@@ -1,0 +1,574 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Final Project API",
+    "description": "Restaurant Management API",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/api-docs": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/restaurants/": {
+      "get": {
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "John Doe"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "This is my bio"
+                },
+                "brand": {
+                  "type": "string",
+                  "example": "My Brand"
+                },
+                "social_media": {
+                  "type": "object",
+                  "properties": {
+                    "Facebook": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's Facebook Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "facebook.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "facebook.com/john_doe"
+                        }
+                      }
+                    },
+                    "Instagram": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's Instagram Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "instagram.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "instagram.com/john_doe"
+                        }
+                      }
+                    },
+                    "Twitter": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's Twitter Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "twitter.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "twitter.com/john_doe"
+                        }
+                      }
+                    },
+                    "LinkedIn": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's LinkedIn Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "linkedin.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "linkedin.com/john_doe"
+                        }
+                      }
+                    },
+                    "Youtube": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's YouTube Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "youtube.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "youtube.com/john_doe"
+                        }
+                      }
+                    },
+                    "Pinterest": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's YouTube Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "youtube.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "youtube.com/john_doe"
+                        }
+                      }
+                    },
+                    "Snapchat": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's YouTube Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "youtube.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "youtube.com/john_doe"
+                        }
+                      }
+                    },
+                    "Tiktok": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's YouTube Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "youtube.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "youtube.com/john_doe"
+                        }
+                      }
+                    },
+                    "Reddit": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's YouTube Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "youtube.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "youtube.com/john_doe"
+                        }
+                      }
+                    },
+                    "WhatsApp": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's YouTube Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "youtube.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "youtube.com/john_doe"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/contacts/{id}": {
+      "get": {
+        "description": "",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "John Doe"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "This is my bio"
+                },
+                "brand": {
+                  "type": "string",
+                  "example": "My Brand"
+                },
+                "social_media": {
+                  "type": "object",
+                  "properties": {
+                    "Facebook": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's Facebook Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "facebook.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "facebook.com/john_doe"
+                        }
+                      }
+                    },
+                    "Instagram": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's Instagram Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "instagram.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "instagram.com/john_doe"
+                        }
+                      }
+                    },
+                    "Twitter": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's Twitter Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "twitter.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "twitter.com/john_doe"
+                        }
+                      }
+                    },
+                    "LinkedIn": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's LinkedIn Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "linkedin.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "linkedin.com/john_doe"
+                        }
+                      }
+                    },
+                    "Youtube": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's YouTube Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "youtube.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "youtube.com/john_doe"
+                        }
+                      }
+                    },
+                    "Pinterest": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's YouTube Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "youtube.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "youtube.com/john_doe"
+                        }
+                      }
+                    },
+                    "Snapchat": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's YouTube Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "youtube.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "youtube.com/john_doe"
+                        }
+                      }
+                    },
+                    "Tiktok": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's YouTube Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "youtube.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "youtube.com/john_doe"
+                        }
+                      }
+                    },
+                    "Reddit": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's YouTube Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "youtube.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "youtube.com/john_doe"
+                        }
+                      }
+                    },
+                    "WhatsApp": {
+                      "type": "object",
+                      "properties": {
+                        "user_handle": {
+                          "type": "string",
+                          "example": "john_doe"
+                        },
+                        "link_title": {
+                          "type": "string",
+                          "example": "John's YouTube Page"
+                        },
+                        "website": {
+                          "type": "string",
+                          "example": "youtube.com"
+                        },
+                        "url": {
+                          "type": "string",
+                          "example": "youtube.com/john_doe"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  }
+}

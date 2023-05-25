@@ -1,0 +1,17 @@
+// LOCALHOST
+### Get all restaurant
+GET http://localhost:8080/contacts
+
+### Get restaurant by id
+GET http://localhost:8080/contacts/6464e3943c8304eccf712aa5
+
+### Create restaurant
+POST http://localhost:8080/contacts HTTP/1.1
+content-type: application/json
+
+### PUT restaurant
+PUT http://localhost:8080/contacts/6464eb3caf02ddc25c5f50e6 HTTP/1.1
+content-type: application/json
+
+### DELETE restaurant
+DELETE http://localhost:8080/contacts/6464eb3caf02ddc25c5f50e6 HTTP/1.1

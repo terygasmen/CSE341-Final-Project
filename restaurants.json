@@ -1,0 +1,11 @@
+{
+        "restaurant": {
+          "name": "Restaurant 1",
+          "description": "We offer blanks and blanks",
+          "phone_number": "+12 345 6789",
+          "opening_hours": "6am - 10pm",
+          "average_rating": "3 stars",
+          "menu_id": ""
+        }
+}
+      
