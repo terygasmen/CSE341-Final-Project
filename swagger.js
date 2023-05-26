@@ -2,8 +2,8 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'Final Project API',
-    description: 'Restaurant Management API'
+    title: 'My API',
+    description: 'Temple API'
   },
   host: 'localhost:8080/contacts',
   schemes: ['http']

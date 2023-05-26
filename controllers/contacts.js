@@ -183,34 +183,19 @@ const updateContact = async (req, res) => {
 
     // Validate the required fields
     const requiredFields = ['name', 'bio', 'brand'];
-    const missingFields = requiredFields.filter((field) => !(field in req.body));
+    const missingFields = requiredFields.filter(field => !(field in req.body));
     if (missingFields.length > 0) {
-      return res
-        .status(400)
-        .json({ error: `Missing required fields: ${missingFields.join(', ')}` });
+      return res.status(400).json({ error: `Missing required fields: ${missingFields.join(', ')}` });
     }
 
     // Validate the fields that should be integers
-    const integerFields = [
-      'facebook_user_handle',
-      'twitter_user_handle',
-      'instagram_user_handle',
-      'linkedin_user_handle',
-      'youtube_user_handle',
-      'pinterest_user_handle',
-      'snapchat_user_handle',
-      'tiktok_user_handle',
-      'reddit_user_handle',
-      'whatsapp_user_handle'
-    ];
-    const invalidIntegerFields = integerFields.filter((field) => {
+    const integerFields = ['facebook_user_handle', 'twitter_user_handle', 'instagram_user_handle', 'linkedin_user_handle', 'youtube_user_handle', 'pinterest_user_handle', 'snapchat_user_handle', 'tiktok_user_handle', 'reddit_user_handle', 'whatsapp_user_handle'];
+    const invalidIntegerFields = integerFields.filter(field => {
       const value = req.body[field];
       return value !== undefined && typeof value !== 'number' && isNaN(value);
     });
     if (invalidIntegerFields.length > 0) {
-      return res
-        .status(400)
-        .json({ error: `Invalid integer fields: ${invalidIntegerFields.join(', ')}` });
+      return res.status(400).json({ error: `Invalid integer fields: ${invalidIntegerFields.join(', ')}` });
     }
 
     const contact = {
@@ -281,11 +266,7 @@ const updateContact = async (req, res) => {
       }
     };
 
-    const response = await mongodb
-      .getDb()
-      .db()
-      .collection('contacts')
-      .replaceOne({ _id: userId }, contact);
+    const response = await mongodb.getDb().db().collection('contacts').replaceOne({ _id: userId }, contact);
 
     if (response.modifiedCount > 0) {
       res.status(204).send();
@@ -296,6 +277,7 @@ const updateContact = async (req, res) => {
     res.status(500).json(error.message || 'Some error occurred while updating the contact.');
   }
 };
+
 
 const deleteContact = async (req, res) => {
   try {

@@ -1,8 +1,8 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Final Project API",
-    "description": "Restaurant Management API",
+    "title": "My API",
+    "description": "Omnipresence API",
     "version": "1.0.0"
   },
   "host": "localhost:8080",
@@ -16,7 +16,7 @@
         "responses": {}
       }
     },
-    "/restaurants/": {
+    "/contacts/": {
       "get": {
         "description": "",
         "produces": ["application/json"],
