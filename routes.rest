@@ -10,22 +10,22 @@ POST http://localhost:3000/restaurants HTTP/1.1
 content-type: application/json
 
 {
-        "name": "Restaurant 2",
-        "description": "Restaurant 2 Description",
+        "name": "Restaurant 3",
+        "description": "Restaurant 3 Description",
         "phone_number": "+12 345 6789",
         "opening_hours": "6am - 10pm",
-        "average_rating": "4 stars",
+        "average_rating": "5 stars",
         "menu_id": "646f7a47f3c0b6aa6b2be7b9"
 }
 
 
 ### PUT restaurant
-PUT http://localhost:3000/restaurants/6470f7b954a09fdbf30cf7e8 HTTP/1.1
+PUT http://localhost:3000/restaurants/6470fac1bc382e628223c9a1 HTTP/1.1
 content-type: application/json
 
 {
-        "name": "Restaurant 1",
-        "description": "Restaurant 1 Description",
+        "name": "Restaurant 4",
+        "description": "Restaurant 4 Description",
         "phone_number": "+12 345 6789",
         "opening_hours": "6am - 10pm",
         "average_rating": "3 stars",
@@ -33,4 +33,4 @@ content-type: application/json
 }
 
 ### DELETE restaurant
-DELETE http://localhost:3000/restaurants/6470f98c54a09fdbf30cf7ea HTTP/1.1
+DELETE http://localhost:3000/restaurants/6470fac1bc382e628223c9a1 HTTP/1.1
