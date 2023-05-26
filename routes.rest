@@ -20,7 +20,7 @@ content-type: application/json
 
 
 ### PUT restaurant
-PUT http://localhost:3000/restaurants/646f79d0f3c0b6aa6b2be7b7 HTTP/1.1
+PUT http://localhost:3000/restaurants/6470f7b954a09fdbf30cf7e8 HTTP/1.1
 content-type: application/json
 
 {
@@ -33,4 +33,4 @@ content-type: application/json
 }
 
 ### DELETE restaurant
-DELETE http://localhost:3000/restaurants/6470f4591ea537fc457703f4 HTTP/1.1
+DELETE http://localhost:3000/restaurants/6470f98c54a09fdbf30cf7ea HTTP/1.1

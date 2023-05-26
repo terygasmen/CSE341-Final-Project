@@ -37,7 +37,7 @@ const createRestaurant = async (req, res) => {
       opening_hours,
       average_rating,
       menu_id
-    } = req.body;
+    } = req.body.restaurant;
 
     const restaurant = {
       name,
