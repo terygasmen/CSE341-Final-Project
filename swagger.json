@@ -16,7 +16,7 @@
         "responses": {}
       }
     },
-    "/contacts/": {
+    "/restaurants/": {
       "get": {
         "description": "",
         "produces": ["application/json"],
@@ -277,7 +277,7 @@
         }
       }
     },
-    "/contacts/{id}": {
+    "/restaurants/{id}": {
       "get": {
         "description": "",
         "produces": ["application/json"],

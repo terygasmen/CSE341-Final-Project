@@ -1,0 +1,11 @@
+{
+        "orders": {
+          "restaurant_id": "646f79d0f3c0b6aa6b2be7b7",
+          "customer_name": "Customer 1",
+          "customer_email": "customer1@email.test",
+          "total_amount": "$1",
+          "date_and_time_of_order": "2023-05-27 01:39am",
+          "status": "Finished"
+        }
+}
+      

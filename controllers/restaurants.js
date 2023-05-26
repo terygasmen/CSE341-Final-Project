@@ -3,32 +3,32 @@ const ObjectId = require('mongodb').ObjectId;
 
 const getAll = async (req, res) => {
   try {
-    const result = await mongodb.getDb().db().collection('contacts').find();
+    const result = await mongodb.getDb().db().collection('restaurant').find();
     const lists = await result.toArray();
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists);
   } catch (error) {
-    res.status(500).json(error.message || 'Some error occurred while retrieving contacts.');
+    res.status(500).json(error.message || 'Some error occurred while retrieving restaurants.');
   }
 };
 
 const getSingle = async (req, res) => {
   try {
     const userId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db().collection('contacts').find({ _id: userId });
+    const result = await mongodb.getDb().db().collection('restaurant').find({ _id: userId });
     const lists = await result.toArray();
     if (lists.length > 0) {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(lists[0]);
     } else {
-      res.status(404).json('Contact not found.');
+      res.status(404).json('Restaurant not found.');
     }
   } catch (error) {
-    res.status(500).json(error.message || 'Some error occurred while retrieving the contact.');
+    res.status(500).json(error.message || 'Some error occurred while retrieving the restaurant.');
   }
 };
 
-const createContact = async (req, res) => {
+const createRestaurant = async (req, res) => {
   try {
     const {
       name,
@@ -98,7 +98,7 @@ const createContact = async (req, res) => {
       }
     } = req.body;
 
-    const contact = {
+    const restaurant = {
       name,
       bio,
       brand,
@@ -166,18 +166,18 @@ const createContact = async (req, res) => {
       }
     };
 
-    const response = await mongodb.getDb().db().collection('contacts').insertOne(contact);
+    const response = await mongodb.getDb().db().collection('restaurant').insertOne(restaurant);
     if (response.acknowledged) {
       res.status(201).json(response);
     } else {
-      res.status(500).json('Some error occurred while creating the contact.');
+      res.status(500).json('Some error occurred while creating the restaurant.');
     }
   } catch (error) {
-    res.status(500).json(error.message || 'Some error occurred while creating the contact.');
+    res.status(500).json(error.message || 'Some error occurred while creating the restaurant.');
   }
 };
 
-const updateContact = async (req, res) => {
+const updateRestaurant = async (req, res) => {
   try {
     const userId = new ObjectId(req.params.id);
 
@@ -198,7 +198,7 @@ const updateContact = async (req, res) => {
       return res.status(400).json({ error: `Invalid integer fields: ${invalidIntegerFields.join(', ')}` });
     }
 
-    const contact = {
+    const restaurant = {
       name: req.body.name,
       bio: req.body.bio,
       brand: req.body.brand,
@@ -266,42 +266,42 @@ const updateContact = async (req, res) => {
       }
     };
 
-    const response = await mongodb.getDb().db().collection('contacts').replaceOne({ _id: userId }, contact);
+    const response = await mongodb.getDb().db().collection('restaurants').replaceOne({ _id: userId }, restaurant);
 
     if (response.modifiedCount > 0) {
       res.status(204).send();
     } else {
-      res.status(500).json('Some error occurred while updating the contact.');
+      res.status(500).json('Some error occurred while updating the restaurant.');
     }
   } catch (error) {
-    res.status(500).json(error.message || 'Some error occurred while updating the contact.');
+    res.status(500).json(error.message || 'Some error occurred while updating the restaurant.');
   }
 };
 
 
-const deleteContact = async (req, res) => {
+const deleteRestaurant = async (req, res) => {
   try {
     const userId = new ObjectId(req.params.id);
     const response = await mongodb
       .getDb()
       .db()
-      .collection('contacts')
+      .collection('restaurant')
       .deleteOne({ _id: userId }, true);
     console.log(response);
     if (response.deletedCount > 0) {
       res.status(204).send();
     } else {
-      res.status(500).json('Some error occurred while deleting the contact.');
+      res.status(500).json('Some error occurred while deleting the restaurant.');
     }
   } catch (error) {
-    res.status(500).json(error.message || 'Some error occurred while deleting the contact.');
+    res.status(500).json(error.message || 'Some error occurred while deleting the restaurant.');
   }
 };
 
 module.exports = {
   getAll,
   getSingle,
-  createContact,
-  updateContact,
-  deleteContact
+  createRestaurant,
+  updateRestaurant,
+  deleteRestaurant
 };

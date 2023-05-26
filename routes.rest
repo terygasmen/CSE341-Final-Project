@@ -1,17 +1,36 @@
 // LOCALHOST
 ### Get all restaurant
-GET http://localhost:8080/contacts
+GET http://localhost:3000/restaurants
 
 ### Get restaurant by id
-GET http://localhost:8080/contacts/6464e3943c8304eccf712aa5
+GET http://localhost:3000/restaurants/646f79d0f3c0b6aa6b2be7b7
 
 ### Create restaurant
-POST http://localhost:8080/contacts HTTP/1.1
+POST http://localhost:3000/restaurants HTTP/1.1
 content-type: application/json
+
+{
+        "name": "Restaurant 2",
+        "description": "Restaurant 2 Description",
+        "phone_number": "+12 345 6789",
+        "opening_hours": "6am - 10pm",
+        "average_rating": "4 stars",
+        "menu_id": ""
+}
+
 
 ### PUT restaurant
-PUT http://localhost:8080/contacts/6464eb3caf02ddc25c5f50e6 HTTP/1.1
+PUT http://localhost:3000/restaurants/6464eb3caf02ddc25c5f50e6 HTTP/1.1
 content-type: application/json
 
+{
+        "name": "Restaurant 2",
+        "description": "Restaurant 2 Description",
+        "phone_number": "+12 345 6789",
+        "opening_hours": "6am - 10pm",
+        "average_rating": "4 stars",
+        "menu_id": ""
+}
+
 ### DELETE restaurant
-DELETE http://localhost:8080/contacts/6464eb3caf02ddc25c5f50e6 HTTP/1.1
+DELETE http://localhost:3000/restaurants/6464eb3caf02ddc25c5f50e6 HTTP/1.1
