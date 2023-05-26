@@ -32,138 +32,20 @@ const createRestaurant = async (req, res) => {
   try {
     const {
       name,
-      bio,
-      brand,
-      social_media: {
-        Facebook: {
-          user_handle: facebook_user_handle,
-          link_title: facebook_link_title,
-          website: facebook_website,
-          url: facebook_url
-        },
-        Instagram: {
-          user_handle: instagram_user_handle,
-          link_title: instagram_link_title,
-          website: instagram_website,
-          url: instagram_url
-        },
-        Twitter: {
-          user_handle: twitter_user_handle,
-          link_title: twitter_link_title,
-          website: twitter_website,
-          url: twitter_url
-        },
-        LinkedIn: {
-          user_handle: linkedin_user_handle,
-          link_title: linkedin_link_title,
-          website: linkedin_website,
-          url: linkedin_url
-        },
-        Youtube: {
-          user_handle: youtube_user_handle,
-          link_title: youtube_link_title,
-          website: youtube_website,
-          url: youtube_url
-        },
-        Pinterest: {
-          user_handle: pinterest_user_handle,
-          link_title: pinterest_link_title,
-          website: pinterest_website,
-          url: pinterest_url
-        },
-        Snapchat: {
-          user_handle: snapchat_user_handle,
-          link_title: snapchat_link_title,
-          website: snapchat_website,
-          url: snapchat_url
-        },
-        Tiktok: {
-          user_handle: tiktok_user_handle,
-          link_title: tiktok_link_title,
-          website: tiktok_website,
-          url: tiktok_url
-        },
-        Reddit: {
-          user_handle: reddit_user_handle,
-          link_title: reddit_link_title,
-          website: reddit_website,
-          url: reddit_url
-        },
-        WhatsApp: {
-          user_handle: whatsapp_user_handle,
-          link_title: whatsapp_link_title,
-          website: whatsapp_website,
-          url: whatsapp_url
-        }
-      }
+      description,
+      phone_number,
+      opening_hours,
+      average_rating,
+      menu_id
     } = req.body;
 
     const restaurant = {
       name,
-      bio,
-      brand,
-      social_media: {
-        Facebook: {
-          user_handle: facebook_user_handle,
-          link_title: facebook_link_title,
-          website: facebook_website,
-          url: facebook_url
-        },
-        Instagram: {
-          user_handle: instagram_user_handle,
-          link_title: instagram_link_title,
-          website: instagram_website,
-          url: instagram_url
-        },
-        Twitter: {
-          user_handle: twitter_user_handle,
-          link_title: twitter_link_title,
-          website: twitter_website,
-          url: twitter_url
-        },
-        LinkedIn: {
-          user_handle: linkedin_user_handle,
-          link_title: linkedin_link_title,
-          website: linkedin_website,
-          url: linkedin_url
-        },
-        Youtube: {
-          user_handle: youtube_user_handle,
-          link_title: youtube_link_title,
-          website: youtube_website,
-          url: youtube_url
-        },
-        Pinterest: {
-          user_handle: pinterest_user_handle,
-          link_title: pinterest_link_title,
-          website: pinterest_website,
-          url: pinterest_url
-        },
-        Snapchat: {
-          user_handle: snapchat_user_handle,
-          link_title: snapchat_link_title,
-          website: snapchat_website,
-          url: snapchat_url
-        },
-        Tiktok: {
-          user_handle: tiktok_user_handle,
-          link_title: tiktok_link_title,
-          website: tiktok_website,
-          url: tiktok_url
-        },
-        Reddit: {
-          user_handle: reddit_user_handle,
-          link_title: reddit_link_title,
-          website: reddit_website,
-          url: reddit_url
-        },
-        WhatsApp: {
-          user_handle: whatsapp_user_handle,
-          link_title: whatsapp_link_title,
-          website: whatsapp_website,
-          url: whatsapp_url
-        }
-      }
+      description,
+      phone_number,
+      opening_hours,
+      average_rating,
+      menu_id
     };
 
     const response = await mongodb.getDb().db().collection('restaurant').insertOne(restaurant);
@@ -182,91 +64,31 @@ const updateRestaurant = async (req, res) => {
     const userId = new ObjectId(req.params.id);
 
     // Validate the required fields
-    const requiredFields = ['name', 'bio', 'brand'];
+    const requiredFields = ['name', 'description', 'phone_number', 'opening_hours', 'average_rating', 'menu_id'];
     const missingFields = requiredFields.filter(field => !(field in req.body));
     if (missingFields.length > 0) {
       return res.status(400).json({ error: `Missing required fields: ${missingFields.join(', ')}` });
     }
 
-    // Validate the fields that should be integers
-    const integerFields = ['facebook_user_handle', 'twitter_user_handle', 'instagram_user_handle', 'linkedin_user_handle', 'youtube_user_handle', 'pinterest_user_handle', 'snapchat_user_handle', 'tiktok_user_handle', 'reddit_user_handle', 'whatsapp_user_handle'];
-    const invalidIntegerFields = integerFields.filter(field => {
-      const value = req.body[field];
-      return value !== undefined && typeof value !== 'number' && isNaN(value);
-    });
-    if (invalidIntegerFields.length > 0) {
-      return res.status(400).json({ error: `Invalid integer fields: ${invalidIntegerFields.join(', ')}` });
-    }
+    const {
+      name,
+      description,
+      phone_number,
+      opening_hours,
+      average_rating,
+      menu_id
+    } = req.body;
 
     const restaurant = {
-      name: req.body.name,
-      bio: req.body.bio,
-      brand: req.body.brand,
-      social_media: {
-        Facebook: {
-          user_handle: req.body.facebook_user_handle,
-          link_title: req.body.facebook_link_title,
-          website: req.body.facebook_website,
-          url: req.body.facebook_url
-        },
-        Instagram: {
-          user_handle: req.body.instagram_user_handle,
-          link_title: req.body.instagram_link_title,
-          website: req.body.instagram_website,
-          url: req.body.instagram_url
-        },
-        Twitter: {
-          user_handle: req.body.twitter_user_handle,
-          link_title: req.body.twitter_link_title,
-          website: req.body.twitter_website,
-          url: req.body.twitter_url
-        },
-        LinkedIn: {
-          user_handle: req.body.linkedin_user_handle,
-          link_title: req.body.linkedin_link_title,
-          website: req.body.linkedin_website,
-          url: req.body.linkedin_url
-        },
-        Youtube: {
-          user_handle: req.body.youtube_user_handle,
-          link_title: req.body.youtube_link_title,
-          website: req.body.youtube_website,
-          url: req.body.youtube_url
-        },
-        Pinterest: {
-          user_handle: req.body.pinterest_user_handle,
-          link_title: req.body.pinterest_link_title,
-          website: req.body.pinterest_website,
-          url: req.body.pinterest_url
-        },
-        Snapchat: {
-          user_handle: req.body.snapchat_user_handle,
-          link_title: req.body.snapchat_link_title,
-          website: req.body.snapchat_website,
-          url: req.body.snapchat_url
-        },
-        Tiktok: {
-          user_handle: req.body.tiktok_user_handle,
-          link_title: req.body.tiktok_link_title,
-          website: req.body.tiktok_website,
-          url: req.body.tiktok_url
-        },
-        Reddit: {
-          user_handle: req.body.reddit_user_handle,
-          link_title: req.body.reddit_link_title,
-          website: req.body.reddit_website,
-          url: req.body.reddit_url
-        },
-        WhatsApp: {
-          user_handle: req.body.whatsapp_user_handle,
-          link_title: req.body.whatsapp_link_title,
-          website: req.body.whatsapp_website,
-          url: req.body.whatsapp_url
-        }
-      }
+      name,
+      description,
+      phone_number,
+      opening_hours,
+      average_rating,
+      menu_id
     };
 
-    const response = await mongodb.getDb().db().collection('restaurants').replaceOne({ _id: userId }, restaurant);
+    const response = await mongodb.getDb().db().collection('restaurant').replaceOne({ _id: userId }, restaurant);
 
     if (response.modifiedCount > 0) {
       res.status(204).send();
@@ -277,7 +99,6 @@ const updateRestaurant = async (req, res) => {
     res.status(500).json(error.message || 'Some error occurred while updating the restaurant.');
   }
 };
-
 
 const deleteRestaurant = async (req, res) => {
   try {

@@ -1,11 +1,11 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "My API",
-    "description": "Omnipresence API",
+    "title": "Final Project API",
+    "description": "Restaurant Management API",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "localhost:3000",
   "basePath": "/",
   "schemes": ["http"],
   "paths": {
@@ -36,230 +36,32 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
-                  "type": "string",
-                  "example": "John Doe"
-                },
-                "bio": {
-                  "type": "string",
-                  "example": "This is my bio"
-                },
-                "brand": {
-                  "type": "string",
-                  "example": "My Brand"
-                },
-                "social_media": {
+                "restaurant": {
                   "type": "object",
                   "properties": {
-                    "Facebook": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's Facebook Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "facebook.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "facebook.com/john_doe"
-                        }
-                      }
+                    "name": {
+                      "type": "string",
+                      "example": "Restaurant Name"
                     },
-                    "Instagram": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's Instagram Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "instagram.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "instagram.com/john_doe"
-                        }
-                      }
+                    "description": {
+                      "type": "string",
+                      "example": "Restaurant Description"
                     },
-                    "Twitter": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's Twitter Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "twitter.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "twitter.com/john_doe"
-                        }
-                      }
+                    "phone_number": {
+                      "type": "string",
+                      "example": "1234567890"
                     },
-                    "LinkedIn": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's LinkedIn Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "linkedin.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "linkedin.com/john_doe"
-                        }
-                      }
+                    "opening_hours": {
+                      "type": "string",
+                      "example": "9 AM - 9 PM"
                     },
-                    "Youtube": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's YouTube Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "youtube.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "youtube.com/john_doe"
-                        }
-                      }
+                    "average_rating": {
+                      "type": "number",
+                      "example": 4.5
                     },
-                    "Pinterest": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's YouTube Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "youtube.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "youtube.com/john_doe"
-                        }
-                      }
-                    },
-                    "Snapchat": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's YouTube Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "youtube.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "youtube.com/john_doe"
-                        }
-                      }
-                    },
-                    "Tiktok": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's YouTube Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "youtube.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "youtube.com/john_doe"
-                        }
-                      }
-                    },
-                    "Reddit": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's YouTube Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "youtube.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "youtube.com/john_doe"
-                        }
-                      }
-                    },
-                    "WhatsApp": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's YouTube Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "youtube.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "youtube.com/john_doe"
-                        }
-                      }
+                    "menu_id": {
+                      "type": "string",
+                      "example": "menu-123"
                     }
                   }
                 }
@@ -310,230 +112,32 @@
             "schema": {
               "type": "object",
               "properties": {
-                "name": {
-                  "type": "string",
-                  "example": "John Doe"
-                },
-                "bio": {
-                  "type": "string",
-                  "example": "This is my bio"
-                },
-                "brand": {
-                  "type": "string",
-                  "example": "My Brand"
-                },
-                "social_media": {
+                "restaurant": {
                   "type": "object",
                   "properties": {
-                    "Facebook": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's Facebook Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "facebook.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "facebook.com/john_doe"
-                        }
-                      }
+                    "name": {
+                      "type": "string",
+                      "example": "Restaurant Name"
                     },
-                    "Instagram": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's Instagram Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "instagram.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "instagram.com/john_doe"
-                        }
-                      }
+                    "description": {
+                      "type": "string",
+                      "example": "Restaurant Description"
                     },
-                    "Twitter": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's Twitter Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "twitter.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "twitter.com/john_doe"
-                        }
-                      }
+                    "phone_number": {
+                      "type": "string",
+                      "example": "1234567890"
                     },
-                    "LinkedIn": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's LinkedIn Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "linkedin.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "linkedin.com/john_doe"
-                        }
-                      }
+                    "opening_hours": {
+                      "type": "string",
+                      "example": "9 AM - 9 PM"
                     },
-                    "Youtube": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's YouTube Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "youtube.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "youtube.com/john_doe"
-                        }
-                      }
+                    "average_rating": {
+                      "type": "number",
+                      "example": 4.5
                     },
-                    "Pinterest": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's YouTube Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "youtube.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "youtube.com/john_doe"
-                        }
-                      }
-                    },
-                    "Snapchat": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's YouTube Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "youtube.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "youtube.com/john_doe"
-                        }
-                      }
-                    },
-                    "Tiktok": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's YouTube Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "youtube.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "youtube.com/john_doe"
-                        }
-                      }
-                    },
-                    "Reddit": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's YouTube Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "youtube.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "youtube.com/john_doe"
-                        }
-                      }
-                    },
-                    "WhatsApp": {
-                      "type": "object",
-                      "properties": {
-                        "user_handle": {
-                          "type": "string",
-                          "example": "john_doe"
-                        },
-                        "link_title": {
-                          "type": "string",
-                          "example": "John's YouTube Page"
-                        },
-                        "website": {
-                          "type": "string",
-                          "example": "youtube.com"
-                        },
-                        "url": {
-                          "type": "string",
-                          "example": "youtube.com/john_doe"
-                        }
-                      }
+                    "menu_id": {
+                      "type": "string",
+                      "example": "menu-123"
                     }
                   }
                 }
