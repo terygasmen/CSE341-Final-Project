@@ -2,20 +2,33 @@ const swaggerAutogen = require('swagger-autogen')();
 
 const doc = {
   info: {
-    title: 'Final Project API',
-    description: 'Restaurant Management API'
+    version: '', // by default: '1.0.0'
+    title: 'Restaurant', // by default: 'REST API'
+    description: 'Restaurant api' // by default: ''
   },
-  host: 'localhost:3000/restaurants',
-  schemes: ['http']
+  host: 'restaurant.onrender.com', // by default: 'localhost:3000'
+  basePath: '', // by default: '/'
+  schemes: ['https'], // by default: ['http']
+  consumes: [], // by default: ['application/json']
+  produces: [], // by default: ['application/json']
+  tags: [
+    // by default: empty Array
+    {
+      name: '', // Tag name
+      description: '' // Tag description
+    }
+    // { ... }
+  ],
+  securityDefinitions: {}, // by default: empty object
+  definitions: {}, // by default: empty object (Swagger 2.0)
+  components: {} // by default: empty object (OpenAPI 3.x)
 };
 
-const outputFile = './swagger.json';
+const outputFile = 'swagger-output.json';
 const endpointsFiles = ['./routes/index.js'];
 
-// generate swagger.json
-swaggerAutogen(outputFile, endpointsFiles, doc);
+/* NOTE: if you use the express Router, you must pass in the 
+   'endpointsFiles' only the root file where the route starts,
+   such as: index.js, app.js, routes.js, ... */
 
-// Run server after it gets generated
-// swaggerAutogen(outputFile, endpointsFiles, doc).then(async () => {
-//   await import('./index.js');
-// });
+swaggerAutogen(outputFile, endpointsFiles, doc);

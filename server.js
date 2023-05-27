@@ -3,9 +3,13 @@ const bodyParser = require('body-parser');
 const mongodb = require('./db/connect');
 const { auth, requiresAuth } = require('express-openid-connect');
 require('dotenv').config();
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
 
 const port = process.env.PORT || 3000;
 const app = express();
+
+
 
 const config = {
   authRequired: false,
@@ -25,9 +29,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/profile', requiresAuth(), (req, res) => {
-        res.send(JSON.stringify(req.oidc.user));
+  res.send(JSON.stringify(req.oidc.user));
 });
-
+// Serve Swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app
   .use(bodyParser.json())
   .use((req, res, next) => {
@@ -35,6 +40,8 @@ app
     next();
   })
   .use('/', require('./routes'));
+
+
 
 mongodb.initDb((err) => {
   if (err) {
