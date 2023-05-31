@@ -2,11 +2,11 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Restaurant",
-    "description": "Restaurant API"
+    "title": "Restaurant Management",
+    "description": "Restaurant Management API"
   },
-  "host": "restaurant.onrender.com",
-  "basePath": "",
+  "host": "localhost:3000",
+  "basePath": "/",
   "tags": [
     {
       "name": "Restaurants",
@@ -30,7 +30,7 @@
     }
   ],
   "schemes": [
-    "https"
+    "http"
   ],
   "securityDefinitions": {},
   "paths": {
@@ -293,16 +293,7 @@
                 "description": {
                   "example": "any"
                 },
-                "price": {
-                  "example": "any"
-                },
-                "cost": {
-                  "example": "any"
-                },
-                "average_rating": {
-                  "example": "any"
-                },
-                "menu_id": {
+                "restaurant_id": {
                   "example": "any"
                 }
               }
