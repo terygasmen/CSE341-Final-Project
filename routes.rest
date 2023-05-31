@@ -90,15 +90,15 @@ content-type: application/json
 
 
 ### PUT user
-PUT http://localhost:3000/users/6476dc55881655f95ebf0749 HTTP/1.1
+PUT http://localhost:3000/users/6476e292a9303d376f463c93 HTTP/1.1
 content-type: application/json
 
 {
-        "firstName": "John",
+        "firstName": "Betty",
         "lastName": "Doe",
-        "email": "johndoe@example.com",
+        "email": "bettydoe@example.com",
         "birthday": "1990-01-01"
 }
 
 ### DELETE user
-DELETE http://localhost:3000/users/6476dc55881655f95ebf0749 HTTP/1.1
+DELETE http://localhost:3000/users/6476e292a9303d376f463c93 HTTP/1.1
