@@ -14,8 +14,8 @@ const getAllRestaurant = async (req, res) => {
 
 const getSingleRestaurant = async (req, res) => {
   try {
-    const userId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db().collection('restaurant').find({ _id: userId });
+    const restaurantId = new ObjectId(req.params.id);
+    const result = await mongodb.getDb().db().collection('restaurant').find({ _id: restaurantId });
     const lists = await result.toArray();
     if (lists.length > 0) {
       res.setHeader('Content-Type', 'application/json');
@@ -61,7 +61,7 @@ const createRestaurant = async (req, res) => {
 
 const updateRestaurant = async (req, res) => {
   try {
-    const userId = new ObjectId(req.params.id);
+    const restaurantId = new ObjectId(req.params.id);
 
     // Validate the required fields
     const requiredFields = ['name', 'description', 'phone_number', 'opening_hours', 'average_rating', 'menu_id'];
@@ -88,7 +88,7 @@ const updateRestaurant = async (req, res) => {
       menu_id
     };
 
-    const response = await mongodb.getDb().db().collection('restaurant').replaceOne({ _id: userId }, restaurant);
+    const response = await mongodb.getDb().db().collection('restaurant').replaceOne({ _id: restaurantId }, restaurant);
 
     if (response.modifiedCount > 0) {
       res.status(204).send();
@@ -102,12 +102,12 @@ const updateRestaurant = async (req, res) => {
 
 const deleteRestaurant = async (req, res) => {
   try {
-    const userId = new ObjectId(req.params.id);
+    const restaurantId = new ObjectId(req.params.id);
     const response = await mongodb
       .getDb()
       .db()
       .collection('restaurant')
-      .deleteOne({ _id: userId }, true);
+      .deleteOne({ _id: restaurantId }, true);
     console.log(response);
     if (response.deletedCount > 0) {
       res.status(204).send();
