@@ -1,7 +1,7 @@
 const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
-const getAll = async (req, res) => {
+const getAllRestaurant = async (req, res) => {
   try {
     const result = await mongodb.getDb().db().collection('restaurant').find();
     const lists = await result.toArray();
@@ -12,7 +12,7 @@ const getAll = async (req, res) => {
   }
 };
 
-const getSingle = async (req, res) => {
+const getSingleRestaurant = async (req, res) => {
   try {
     const userId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('restaurant').find({ _id: userId });
@@ -37,7 +37,7 @@ const createRestaurant = async (req, res) => {
       opening_hours,
       average_rating,
       menu_id
-    } = req.body.restaurant;
+    } = req.body;
 
     const restaurant = {
       name,
@@ -120,8 +120,8 @@ const deleteRestaurant = async (req, res) => {
 };
 
 module.exports = {
-  getAll,
-  getSingle,
+  getAllRestaurant,
+  getSingleRestaurant,
   createRestaurant,
   updateRestaurant,
   deleteRestaurant

@@ -1,9 +1,11 @@
 // LOCALHOST
+
+////////////////////// RESTAURANT /////////////
 ### Get all restaurant
 GET http://localhost:3000/restaurants
 
 ### Get restaurant by id
-GET http://localhost:3000/restaurants/646f79d0f3c0b6aa6b2be7b7
+GET http://localhost:3000/restaurants/6470f7b954a09fdbf30cf7e8
 
 ### Create restaurant
 POST http://localhost:3000/restaurants HTTP/1.1
@@ -20,7 +22,7 @@ content-type: application/json
 
 
 ### PUT restaurant
-PUT http://localhost:3000/restaurants/6470fac1bc382e628223c9a1 HTTP/1.1
+PUT http://localhost:3000/restaurants/6476d5a3704e47faec3f5c2e HTTP/1.1
 content-type: application/json
 
 {
@@ -33,4 +35,36 @@ content-type: application/json
 }
 
 ### DELETE restaurant
-DELETE http://localhost:3000/restaurants/6470fac1bc382e628223c9a1 HTTP/1.1
+DELETE http://localhost:3000/restaurants/6476d5a3704e47faec3f5c2e HTTP/1.1
+
+//////////////////////// MENU /////////////////////
+
+### Get all menu
+GET http://localhost:3000/menu
+
+### Get menu by id
+GET http://localhost:3000/menu/646f7a47f3c0b6aa6b2be7b9
+
+### Create menu
+POST http://localhost:3000/menu HTTP/1.1
+content-type: application/json
+
+{
+        "name": "Breakfast Menu 1",
+        "description": "Breakfast Menu 1 Description",
+        "restaurant_id": "646f79d0f3c0b6aa6b2be7b7"
+}
+
+
+### PUT menu
+PUT http://localhost:3000/menu/646f7a47f3c0b6aa6b2be7b9 HTTP/1.1
+content-type: application/json
+
+{
+        "name": "Breakfast Menu 3",
+        "description": "Breakfast Menu 3 Description",
+        "restaurant_id": "646f79d0f3c0b6aa6b2be7b7"
+}
+
+### DELETE menu
+DELETE http://localhost:3000/menu/646f7a47f3c0b6aa6b2be7b9 HTTP/1.1

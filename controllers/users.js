@@ -2,7 +2,7 @@ const { ObjectId } = require('mongodb');
 const mongodb = require('../db/connect');
 
 
-const getAll = async (req, res) => {
+const getAllUser = async (req, res) => {
     //#swagger.tags=['Users']
     try{
     const result = await mongodb.getDb().db('restaurant').collection('users').find();
@@ -15,7 +15,7 @@ const getAll = async (req, res) => {
   }
 };
 
-const getOne = async (req, res) => {
+const getOneUser = async (req, res) => {
     //#swagger.tags=['Users']
     try {
     const userId = new ObjectId(req.params.id);
@@ -89,4 +89,4 @@ const deleteUser = async (req, res) => {
 }
 };
 
-module.exports = { getAll, getOne, createUser, updateUser, deleteUser };
+module.exports = { getAllUser, getOneUser, createUser, updateUser, deleteUser };
