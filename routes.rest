@@ -125,7 +125,7 @@ content-type: application/json
 
 
 ### PUT item
-PUT http://localhost:3000/items/6476e292a9303d376f463c93 HTTP/1.1
+PUT http://localhost:3000/items/6476e56f02ed0345a7e07415 HTTP/1.1
 content-type: application/json
 
 {
@@ -136,4 +136,4 @@ content-type: application/json
 }
 
 ### DELETE item
-DELETE http://localhost:3000/items/6476e292a9303d376f463c93 HTTP/1.1
+DELETE http://localhost:3000/items/6476e56f02ed0345a7e07415 HTTP/1.1
