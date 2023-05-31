@@ -1,5 +1,7 @@
-const request = require('supertest');
 const app = require('../routes/index');
+const supertest = require('supertest');
+const { expect } = require('@jest/globals');
+const request = supertest(app);
 
 describe('PUT /restaurants/:id', () => {
   it('should update a restaurant by ID', async () => {
