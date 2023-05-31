@@ -2,7 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./db/connect');
 const { auth, requiresAuth } = require('express-openid-connect');
-require('dotenv').config();
+const dotenv = require('dotenv');
+dotenv.config();
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
 
@@ -35,7 +36,7 @@ app.get('/profile', requiresAuth(), (req, res) => {
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app
   .use(bodyParser.json())
-  .use((req, res, next) => {
+  .use((err, req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
   })
