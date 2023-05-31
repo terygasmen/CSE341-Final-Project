@@ -137,3 +137,41 @@ content-type: application/json
 
 ### DELETE item
 DELETE http://localhost:3000/items/6476e56f02ed0345a7e07415 HTTP/1.1
+
+//////////////////////// ORDERS /////////////////////
+
+### Get all orders
+GET http://localhost:3000/orders
+
+### Get order by id
+GET http://localhost:3000/orders/6476e5f3881655f95ebf0754
+
+### Create order
+POST http://localhost:3000/orders HTTP/1.1
+content-type: application/json
+
+{
+        "restaurant_id": "646f79d0f3c0b6aa6b2be7b7",
+        "customer_name": "Customer 2",
+        "customer_email": "customer2@email.test",
+        "total_amount": "$1",
+        "date_and_time_of_order": "2023-05-27 01:39am",
+        "status": "Finished"
+}
+
+
+### PUT order
+PUT http://localhost:3000/orders/6476e7516c836394de90057f HTTP/1.1
+content-type: application/json
+
+{
+        "restaurant_id": "646f79d0f3c0b6aa6b2be7b7",
+        "customer_name": "Customer 3",
+        "customer_email": "customer3@email.test",
+        "total_amount": "$1",
+        "date_and_time_of_order": "2023-05-27 01:39am",
+        "status": "Finished"
+}
+
+### DELETE order
+DELETE http://localhost:3000/orders/6476e7516c836394de90057f HTTP/1.1
