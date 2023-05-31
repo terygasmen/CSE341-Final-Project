@@ -102,3 +102,38 @@ content-type: application/json
 
 ### DELETE user
 DELETE http://localhost:3000/users/6476e292a9303d376f463c93 HTTP/1.1
+
+
+//////////////////////// ITEMS /////////////////////
+
+### Get all items
+GET http://localhost:3000/items
+
+### Get item by id
+GET http://localhost:3000/items/6476e468881655f95ebf0752
+
+### Create item
+POST http://localhost:3000/items HTTP/1.1
+content-type: application/json
+
+{
+        "name": "Item 1",
+        "description": "Item Description",
+        "price": "$1",
+        "menu_id": "646f7a47f3c0b6aa6b2be7b9"
+}
+
+
+### PUT item
+PUT http://localhost:3000/items/6476e292a9303d376f463c93 HTTP/1.1
+content-type: application/json
+
+{
+        "name": "Item 2",
+        "description": "Item 2 Description",
+        "price": "$1",
+        "menu_id": "646f7a47f3c0b6aa6b2be7b9"
+}
+
+### DELETE item
+DELETE http://localhost:3000/items/6476e292a9303d376f463c93 HTTP/1.1
