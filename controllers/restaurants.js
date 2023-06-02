@@ -1,7 +1,7 @@
 const mongodb = require('../db/connect');
 const { ObjectId } = require('mongodb');
 
-const getAll = async (req, res) => {
+const getAllRestaurant = async (req, res) => {
   try {
     const result = await mongodb.getDb().db().collection('restaurant').find();
     const lists = await result.toArray();
@@ -12,10 +12,10 @@ const getAll = async (req, res) => {
   }
 };
 
-const getSingle = async (req, res) => {
+const getSingleRestaurant = async (req, res) => {
   try {
-    const userId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db().collection('restaurant').find({ _id: userId });
+    const restaurantId = new ObjectId(req.params.id);
+    const result = await mongodb.getDb().db().collection('restaurant').find({ _id: restaurantId });
     const lists = await result.toArray();
 
     if (lists.length > 0) {
@@ -31,7 +31,14 @@ const getSingle = async (req, res) => {
 
 const createRestaurant = async (req, res) => {
   try {
-    const { name, description, phone_number, opening_hours, average_rating, menu_id } = req.body;
+    const {
+      name,
+      description,
+      phone_number,
+      opening_hours,
+      average_rating,
+      menu_id
+    } = req.body;
 
     const restaurant = {
       name,
@@ -55,7 +62,7 @@ const createRestaurant = async (req, res) => {
 
 const updateRestaurant = async (req, res) => {
   try {
-    const userId = new ObjectId(req.params.id);
+    const restaurantId = new ObjectId(req.params.id);
 
     // Validate the required fields
     const requiredFields = [
@@ -102,8 +109,13 @@ const updateRestaurant = async (req, res) => {
 
 const deleteRestaurant = async (req, res) => {
   try {
-    const userId = new ObjectId(req.params.id);
-    const response = await mongodb.getDb().db().collection('restaurant').deleteOne({ _id: userId });
+    const restaurantId = new ObjectId(req.params.id);
+    const response = await mongodb
+      .getDb()
+      .db()
+      .collection('restaurant')
+      .deleteOne({ _id: restaurantId }, true);
+    console.log(response);
     if (response.deletedCount > 0) {
       res.status(204).json({});
     } else {
@@ -115,8 +127,8 @@ const deleteRestaurant = async (req, res) => {
 };
 
 module.exports = {
-  getAll,
-  getSingle,
+  getAllRestaurant,
+  getSingleRestaurant,
   createRestaurant,
   updateRestaurant,
   deleteRestaurant

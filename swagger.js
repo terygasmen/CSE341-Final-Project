@@ -3,12 +3,12 @@ const swaggerAutogen = require('swagger-autogen')();
 const doc = {
   info: {
     version: '', // by default: '1.0.0'
-    title: 'Restaurant', // by default: 'REST API'
-    description: 'Restaurant api' // by default: ''
+    title: 'Restaurant Management', // by default: 'REST API'
+    description: 'Restaurant Management API' // by default: ''
   },
-  host: 'restaurant.onrender.com', // by default: 'localhost:3000'
+  host: 'localhost:3000', // by default: 'localhost:3000'
   basePath: '', // by default: '/'
-  schemes: ['https'], // by default: ['http']
+  schemes: ['http'], // by default: ['http']
   consumes: [], // by default: ['application/json']
   produces: [], // by default: ['application/json']
   tags: [
@@ -24,7 +24,7 @@ const doc = {
   components: {} // by default: empty object (OpenAPI 3.x)
 };
 
-const outputFile = 'swagger-output.json';
+const outputFile = './swagger-output.json';
 const endpointsFiles = ['./routes/index.js'];
 
 /* NOTE: if you use the express Router, you must pass in the 

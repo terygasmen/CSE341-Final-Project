@@ -2,25 +2,41 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Restaurant",
-    "description": "Restaurant api"
+    "title": "Restaurant Management",
+    "description": "Restaurant Management API"
   },
-  "host": "restaurant.onrender.com",
-  "basePath": "",
+  "host": "localhost:3000",
+  "basePath": "/",
   "tags": [
     {
-      "name": "",
-      "description": ""
+      "name": "Restaurants",
+      "description": "Operations related to restaurants"
+    },
+    {
+      "name": "Menu",
+      "description": "Operations related to menu"
+    },
+    {
+      "name": "Users",
+      "description": "Operations related to users"
+    },
+    {
+      "name": "Items",
+      "description": "Operations related to items"
+    },
+    {
+      "name": "Orders",
+      "description": "Operations related to orders"
     }
   ],
   "schemes": [
-    "https"
+    "http"
   ],
   "securityDefinitions": {},
   "paths": {
-    "/restaurants/": {
+    "/restaurants": {
       "get": {
-        "description": "",
+        "description": "Get all restaurants",
         "produces": [
           "application/json"
         ],
@@ -35,7 +51,7 @@
         }
       },
       "post": {
-        "description": "",
+        "description": "Create a new restaurant",
         "parameters": [
           {
             "name": "body",
@@ -43,7 +59,22 @@
             "schema": {
               "type": "object",
               "properties": {
-                "restaurant": {
+                "name": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "phone_number": {
+                  "example": "any"
+                },
+                "opening_hours": {
+                  "example": "any"
+                },
+                "average_rating": {
+                  "example": "any"
+                },
+                "menu_id": {
                   "example": "any"
                 }
               }
@@ -62,7 +93,7 @@
     },
     "/restaurants/{id}": {
       "get": {
-        "description": "",
+        "description": "Get a restaurant by ID",
         "produces": [
           "application/json"
         ],
@@ -87,7 +118,7 @@
         }
       },
       "put": {
-        "description": "",
+        "description": "Update a restaurant by ID",
         "parameters": [
           {
             "name": "id",
@@ -136,7 +167,7 @@
         }
       },
       "delete": {
-        "description": "",
+        "description": "Delete a restaurant by ID",
         "parameters": [
           {
             "name": "id",
@@ -155,12 +186,12 @@
         }
       }
     },
-    "/menu/": {
+    "/menu": {
       "get": {
         "tags": [
           "Menu"
         ],
-        "description": "",
+        "description": "Get all menu items",
         "produces": [
           "application/json"
         ],
@@ -178,7 +209,7 @@
         "tags": [
           "Menu"
         ],
-        "description": "",
+        "description": "Create a new menu item",
         "parameters": [
           {
             "name": "body",
@@ -186,7 +217,13 @@
             "schema": {
               "type": "object",
               "properties": {
-                "menu": {
+                "name": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "restaurant_id": {
                   "example": "any"
                 }
               }
@@ -203,16 +240,23 @@
         }
       }
     },
-    "/menu/id": {
+    "/menu/{id}": {
       "get": {
         "tags": [
           "Menu"
         ],
-        "description": "",
+        "description": "Get a menu item by ID",
         "produces": [
           "application/json"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -229,8 +273,325 @@
         "tags": [
           "Menu"
         ],
-        "description": "",
+        "description": "Update a menu item by ID",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "restaurant_id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Menu"
+        ],
+        "description": "Delete a menu item by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Get all users",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Create a new user",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Get a user by ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/update/{id}": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Update a user by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "firstName": {
+                  "example": "any"
+                },
+                "lastName": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                },
+                "birthday": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "description": "Delete a user by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/items": {
+      "get": {
+        "tags": [
+          "Items"
+        ],
+        "description": "Get all items",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Items"
+        ],
+        "description": "Create a new item",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "description": {
+                  "example": "any"
+                },
+                "price": {
+                  "example": "any"
+                },
+                "cost": {
+                  "example": "any"
+                },
+                "average_rating": {
+                  "example": "any"
+                },
+                "menu_id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/items/{id}": {
+      "get": {
+        "tags": [
+          "Items"
+        ],
+        "description": "Get an item by ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Items"
+        ],
+        "description": "Update an item by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
@@ -273,10 +634,17 @@
       },
       "delete": {
         "tags": [
-          "Menu"
+          "Items"
         ],
-        "description": "",
-        "parameters": [],
+        "description": "Delete an item by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "204": {
             "description": "No Content"
@@ -287,12 +655,12 @@
         }
       }
     },
-    "users/": {
+    "/orders": {
       "get": {
         "tags": [
-          "Users"
+          "Orders"
         ],
-        "description": "",
+        "description": "Get all orders",
         "produces": [
           "application/json"
         ],
@@ -308,9 +676,9 @@
       },
       "post": {
         "tags": [
-          "Users"
+          "Orders"
         ],
-        "description": "",
+        "description": "Create a new order",
         "parameters": [
           {
             "name": "body",
@@ -318,20 +686,20 @@
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "user_id": {
                   "example": "any"
                 },
-                "lastName": {
+                "item_id": {
                   "example": "any"
                 },
-                "email": {
-                  "example": "any"
+                "quantity": {
+                  "example": 1
                 },
-                "favoriteColor": {
-                  "example": "any"
+                "total_price": {
+                  "example": 10.99
                 },
-                "birthday": {
-                  "example": "any"
+                "order_date": {
+                  "example": "2023-05-31T12:00:00Z"
                 }
               }
             }
@@ -347,56 +715,95 @@
         }
       }
     },
-    "users/id": {
+    "/orders/{id}": {
       "get": {
         "tags": [
-          "Users"
+          "Orders"
         ],
-        "description": "",
+        "description": "Get an order by ID",
         "produces": [
           "application/json"
         ],
-        "parameters": [],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found"
           },
           "500": {
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "users/update/id": {
+      },
       "put": {
         "tags": [
-          "Users"
+          "Orders"
         ],
-        "description": "",
+        "description": "Update an order by ID",
         "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
           {
             "name": "body",
             "in": "body",
             "schema": {
               "type": "object",
               "properties": {
-                "firstName": {
+                "user_id": {
                   "example": "any"
                 },
-                "lastName": {
+                "item_id": {
                   "example": "any"
                 },
-                "email": {
-                  "example": "any"
+                "quantity": {
+                  "example": 2
                 },
-                "favoriteColor": {
-                  "example": "any"
+                "total_price": {
+                  "example": 20.99
                 },
-                "birthday": {
-                  "example": "any"
+                "order_date": {
+                  "example": "2023-05-31T12:00:00Z"
                 }
               }
             }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Orders"
+        ],
+        "description": "Delete an order by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "responses": {
@@ -408,21 +815,115 @@
           }
         }
       }
+    }    
+  },
+  "definitions": {
+    "Restaurant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "phone_number": {
+          "type": "string"
+        },
+        "cuisine": {
+          "type": "string"
+        }
+      }
     },
-    "users/delete/id": {
-      "delete": {
-        "tags": [
-          "Users"
-        ],
-        "description": "",
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
+    "Menu": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "restaurant_id": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "birthday": {
+          "type": "string"
+        }
+      }
+    },
+    "Item": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "cost": {
+          "type": "number"
+        },
+        "average_rating": {
+          "type": "number"
+        },
+        "menu_id": {
+          "type": "string"
+        }
+      }
+    },
+    "Orders": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "restaurant_id": {
+          "type": "string"
+        },
+        "customer_name": {
+          "type": "string"
+        },
+        "customer_email": {
+          "type": "string"
+        },
+        "total_amount": {
+          "type": "number"
+        },
+        "date_and_time_of_order": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
         }
       }
     }
