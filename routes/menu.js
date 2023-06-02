@@ -2,9 +2,9 @@ const express = require('express');
 const router =express.Router();
 const menuController = require('../controllers/menu')
 
-router.get('/',menuController.getAll);
+router.get('/',menuController.getAllMenu);
 
-router.get('/:id',menuController.getSingle);
+router.get('/:id',menuController.getSingleMenu);
 
 router.post('/',menuController.createMenu);
 

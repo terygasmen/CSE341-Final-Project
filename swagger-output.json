@@ -6,27 +6,11 @@
     "description": "Restaurant Management API"
   },
   "host": "localhost:3000",
-  "basePath": "/",
+  "basePath": "",
   "tags": [
     {
-      "name": "Restaurants",
-      "description": "Operations related to restaurants"
-    },
-    {
-      "name": "Menu",
-      "description": "Operations related to menu"
-    },
-    {
-      "name": "Users",
-      "description": "Operations related to users"
-    },
-    {
-      "name": "Items",
-      "description": "Operations related to items"
-    },
-    {
-      "name": "Orders",
-      "description": "Operations related to orders"
+      "name": "",
+      "description": ""
     }
   ],
   "schemes": [
@@ -34,9 +18,12 @@
   ],
   "securityDefinitions": {},
   "paths": {
-    "/restaurants": {
+    "/restaurants/": {
       "get": {
-        "description": "Get all restaurants",
+        "tags": [
+          "Restaurant"
+        ],
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -51,7 +38,10 @@
         }
       },
       "post": {
-        "description": "Create a new restaurant",
+        "tags": [
+          "Restaurant"
+        ],
+        "description": "",
         "parameters": [
           {
             "name": "body",
@@ -74,7 +64,10 @@
                 "average_rating": {
                   "example": "any"
                 },
-                "menu_id": {
+                "adress": {
+                  "example": "any"
+                },
+                "locationlink": {
                   "example": "any"
                 }
               }
@@ -93,7 +86,10 @@
     },
     "/restaurants/{id}": {
       "get": {
-        "description": "Get a restaurant by ID",
+        "tags": [
+          "Restaurant"
+        ],
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -118,7 +114,10 @@
         }
       },
       "put": {
-        "description": "Update a restaurant by ID",
+        "tags": [
+          "Restaurant"
+        ],
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -147,7 +146,10 @@
                 "average_rating": {
                   "example": "any"
                 },
-                "menu_id": {
+                "adress": {
+                  "example": "any"
+                },
+                "locationlink": {
                   "example": "any"
                 }
               }
@@ -167,7 +169,10 @@
         }
       },
       "delete": {
-        "description": "Delete a restaurant by ID",
+        "tags": [
+          "Restaurant"
+        ],
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -186,12 +191,12 @@
         }
       }
     },
-    "/menu": {
+    "/menu/": {
       "get": {
         "tags": [
           "Menu"
         ],
-        "description": "Get all menu items",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -209,7 +214,7 @@
         "tags": [
           "Menu"
         ],
-        "description": "Create a new menu item",
+        "description": "",
         "parameters": [
           {
             "name": "body",
@@ -223,7 +228,10 @@
                 "description": {
                   "example": "any"
                 },
-                "restaurant_id": {
+                "menu_id": {
+                  "example": "any"
+                },
+                "price": {
                   "example": "any"
                 }
               }
@@ -245,7 +253,7 @@
         "tags": [
           "Menu"
         ],
-        "description": "Get a menu item by ID",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -273,7 +281,7 @@
         "tags": [
           "Menu"
         ],
-        "description": "Update a menu item by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -293,7 +301,10 @@
                 "description": {
                   "example": "any"
                 },
-                "restaurant_id": {
+                "menu_id": {
+                  "example": "any"
+                },
+                "price": {
                   "example": "any"
                 }
               }
@@ -316,7 +327,7 @@
         "tags": [
           "Menu"
         ],
-        "description": "Delete a menu item by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -335,12 +346,12 @@
         }
       }
     },
-    "/users": {
+    "/users/": {
       "get": {
         "tags": [
           "Users"
         ],
-        "description": "Get all users",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -358,7 +369,7 @@
         "tags": [
           "Users"
         ],
-        "description": "Create a new user",
+        "description": "",
         "parameters": [
           {
             "name": "body",
@@ -376,6 +387,9 @@
                   "example": "any"
                 },
                 "birthday": {
+                  "example": "any"
+                },
+                "employee_level": {
                   "example": "any"
                 }
               }
@@ -397,7 +411,7 @@
         "tags": [
           "Users"
         ],
-        "description": "Get a user by ID",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -417,14 +431,12 @@
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "/users/update/{id}": {
+      },
       "put": {
         "tags": [
           "Users"
         ],
-        "description": "Update a user by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -449,6 +461,9 @@
                 },
                 "birthday": {
                   "example": "any"
+                },
+                "employee_level": {
+                  "example": "any"
                 }
               }
             }
@@ -458,18 +473,19 @@
           "204": {
             "description": "No Content"
           },
+          "400": {
+            "description": "Bad Request"
+          },
           "500": {
             "description": "Internal Server Error"
           }
         }
-      }
-    },
-    "/users/delete/{id}": {
+      },
       "delete": {
         "tags": [
           "Users"
         ],
-        "description": "Delete a user by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -488,12 +504,12 @@
         }
       }
     },
-    "/items": {
+    "/items/": {
       "get": {
         "tags": [
-          "Items"
+          "Stock"
         ],
-        "description": "Get all items",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -509,9 +525,9 @@
       },
       "post": {
         "tags": [
-          "Items"
+          "Stock"
         ],
-        "description": "Create a new item",
+        "description": "",
         "parameters": [
           {
             "name": "body",
@@ -525,16 +541,10 @@
                 "description": {
                   "example": "any"
                 },
-                "price": {
-                  "example": "any"
-                },
                 "cost": {
                   "example": "any"
                 },
-                "average_rating": {
-                  "example": "any"
-                },
-                "menu_id": {
+                "count": {
                   "example": "any"
                 }
               }
@@ -554,9 +564,9 @@
     "/items/{id}": {
       "get": {
         "tags": [
-          "Items"
+          "Stock"
         ],
-        "description": "Get an item by ID",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -582,9 +592,9 @@
       },
       "put": {
         "tags": [
-          "Items"
+          "Stock"
         ],
-        "description": "Update an item by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -604,16 +614,10 @@
                 "description": {
                   "example": "any"
                 },
-                "price": {
-                  "example": "any"
-                },
                 "cost": {
                   "example": "any"
                 },
-                "average_rating": {
-                  "example": "any"
-                },
-                "menu_id": {
+                "count": {
                   "example": "any"
                 }
               }
@@ -634,9 +638,9 @@
       },
       "delete": {
         "tags": [
-          "Items"
+          "Stock"
         ],
-        "description": "Delete an item by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -655,12 +659,12 @@
         }
       }
     },
-    "/orders": {
+    "/orders/": {
       "get": {
         "tags": [
-          "Orders"
+          "Order"
         ],
-        "description": "Get all orders",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -676,9 +680,9 @@
       },
       "post": {
         "tags": [
-          "Orders"
+          "Order"
         ],
-        "description": "Create a new order",
+        "description": "",
         "parameters": [
           {
             "name": "body",
@@ -686,20 +690,26 @@
             "schema": {
               "type": "object",
               "properties": {
-                "user_id": {
+                "menu_id": {
                   "example": "any"
                 },
-                "item_id": {
+                "restaurant_id": {
                   "example": "any"
                 },
-                "quantity": {
-                  "example": 1
+                "customer_name": {
+                  "example": "any"
                 },
-                "total_price": {
-                  "example": 10.99
+                "customer_email": {
+                  "example": "any"
                 },
-                "order_date": {
-                  "example": "2023-05-31T12:00:00Z"
+                "total_amount": {
+                  "example": "any"
+                },
+                "date_and_time_of_order": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
                 }
               }
             }
@@ -718,9 +728,9 @@
     "/orders/{id}": {
       "get": {
         "tags": [
-          "Orders"
+          "Order"
         ],
-        "description": "Get an order by ID",
+        "description": "",
         "produces": [
           "application/json"
         ],
@@ -746,9 +756,9 @@
       },
       "put": {
         "tags": [
-          "Orders"
+          "Order"
         ],
-        "description": "Update an order by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -762,20 +772,26 @@
             "schema": {
               "type": "object",
               "properties": {
-                "user_id": {
+                "menu_id": {
                   "example": "any"
                 },
-                "item_id": {
+                "restaurant_id": {
                   "example": "any"
                 },
-                "quantity": {
-                  "example": 2
+                "customer_name": {
+                  "example": "any"
                 },
-                "total_price": {
-                  "example": 20.99
+                "customer_email": {
+                  "example": "any"
                 },
-                "order_date": {
-                  "example": "2023-05-31T12:00:00Z"
+                "total_amount": {
+                  "example": "any"
+                },
+                "date_and_time_of_order": {
+                  "example": "any"
+                },
+                "status": {
+                  "example": "any"
                 }
               }
             }
@@ -795,9 +811,9 @@
       },
       "delete": {
         "tags": [
-          "Orders"
+          "Order"
         ],
-        "description": "Delete an order by ID",
+        "description": "",
         "parameters": [
           {
             "name": "id",
@@ -813,117 +829,6 @@
           "500": {
             "description": "Internal Server Error"
           }
-        }
-      }
-    }    
-  },
-  "definitions": {
-    "Restaurant": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "address": {
-          "type": "string"
-        },
-        "phone_number": {
-          "type": "string"
-        },
-        "cuisine": {
-          "type": "string"
-        }
-      }
-    },
-    "Menu": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "restaurant_id": {
-          "type": "string"
-        }
-      }
-    },
-    "User": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "firstName": {
-          "type": "string"
-        },
-        "lastName": {
-          "type": "string"
-        },
-        "email": {
-          "type": "string"
-        },
-        "birthday": {
-          "type": "string"
-        }
-      }
-    },
-    "Item": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "description": {
-          "type": "string"
-        },
-        "price": {
-          "type": "number"
-        },
-        "cost": {
-          "type": "number"
-        },
-        "average_rating": {
-          "type": "number"
-        },
-        "menu_id": {
-          "type": "string"
-        }
-      }
-    },
-    "Orders": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "restaurant_id": {
-          "type": "string"
-        },
-        "customer_name": {
-          "type": "string"
-        },
-        "customer_email": {
-          "type": "string"
-        },
-        "total_amount": {
-          "type": "number"
-        },
-        "date_and_time_of_order": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
         }
       }
     }

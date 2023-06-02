@@ -2,6 +2,7 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAllItem = async (req, res) => {
+  //#swagger.tags=['Stock']
   try {
     const result = await mongodb.getDb().db().collection('item').find();
     const items = await result.toArray();
@@ -13,6 +14,7 @@ const getAllItem = async (req, res) => {
 };
 
 const getSingleItem = async (req, res) => {
+  //#swagger.tags=['Stock']
   try {
     const itemId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('item').find({ _id: itemId });
@@ -29,19 +31,20 @@ const getSingleItem = async (req, res) => {
 };
 
 const createItem = async (req, res) => {
+  //#swagger.tags=['Stock']
   try {
     const { 
       name, 
       description, 
-      price,
-      menu_id
+      cost,
+      count
     } = req.body;
 
     const item = {
       name,
       description,
-      price,
-      menu_id
+      cost,
+      count
     };
 
     const response = await mongodb.getDb().db().collection('item').insertOne(item);
@@ -56,6 +59,7 @@ const createItem = async (req, res) => {
 };
 
 const updateItem = async (req, res) => {
+  //#swagger.tags=['Stock']
   try {
     const itemId = new ObjectId(req.params.id);
 
@@ -69,15 +73,15 @@ const updateItem = async (req, res) => {
     const { 
       name, 
       description, 
-      price,
-      menu_id
+      cost,
+      count
     } = req.body;
 
     const item = {
-      name,
-      description,
-      price,
-      menu_id
+      name, 
+      description, 
+      cost,
+      count
     };
 
     const response = await mongodb.getDb().db().collection('item').replaceOne({ _id: itemId }, item);
@@ -93,6 +97,7 @@ const updateItem = async (req, res) => {
 };
 
 const deleteItem = async (req, res) => {
+  //#swagger.tags=['Stock']
   try {
     const itemId = new ObjectId(req.params.id);
     const response = await mongodb.getDb().db().collection('item').deleteOne({ _id: itemId }, true);
