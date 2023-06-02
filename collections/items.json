@@ -1,7 +1,7 @@
 {
         "name": "Item 1",
         "description": "Item Description",
-        "price": "$1",
-        "menu_id": "646f7a47f3c0b6aa6b2be7b9"
+        "cost": "$1",
+        "count": "646f7a47f3c0b6aa6b2be7b9"
 }
       

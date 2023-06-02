@@ -37,8 +37,8 @@ const createUser = async (req, res) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
-      favoriteColor: req.body.favoriteColor,
-      birthday: req.body.birthday
+      birthday: req.body.birthday,
+      employee_level: req.body.employee_level
     };
     const response = await mongodb.getDb().db('users').collection('users').insertOne(contact);
     if (response.acknowledged) {
@@ -54,14 +54,16 @@ const createUser = async (req, res) => {
       firstName, 
       lastName, 
       email, 
-      birthday 
+      birthday ,
+      employee_level
     } = req.body;
 
     const user = {
-      firstName,
-      lastName,
-      email,
-      birthday,
+      firstName, 
+      lastName, 
+      email, 
+      birthday ,
+      employee_level
     };
 
     const response = await mongodb.getDb().db().collection('user').insertOne(user);
@@ -83,8 +85,8 @@ const updateUser = async (req, res) => {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email,
-      favoriteColor: req.body.favoriteColor,
-      birthday: req.body.birthday
+      birthday: req.body.birthday,
+      employee_level: req.body.employee_level
     };
     const response = await mongodb
       .getDb()
@@ -114,14 +116,16 @@ const updateUser = async (req, res) => {
       firstName, 
       lastName, 
       email, 
-      birthday 
+      birthday ,
+      employee_level
     } = req.body;
 
     const user = {
-      firstName,
-      lastName,
-      email,
-      birthday,
+      firstName, 
+      lastName, 
+      email, 
+      birthday ,
+      employee_level
     };
 
     const response = await mongodb.getDb().db().collection('user').replaceOne({ _id: userId }, user);

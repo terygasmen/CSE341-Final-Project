@@ -2,6 +2,7 @@ const mongodb = require('../db/connect');
 const { ObjectId } = require('mongodb');
 
 const getAllRestaurant = async (req, res) => {
+  //#swagger.tags=['Restaurant']
   try {
     const result = await mongodb.getDb().db().collection('restaurant').find();
     const lists = await result.toArray();
@@ -13,6 +14,7 @@ const getAllRestaurant = async (req, res) => {
 };
 
 const getSingleRestaurant = async (req, res) => {
+  //#swagger.tags=['Restaurant']
   try {
     const restaurantId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('restaurant').find({ _id: restaurantId });
@@ -30,15 +32,10 @@ const getSingleRestaurant = async (req, res) => {
 };
 
 const createRestaurant = async (req, res) => {
+  //#swagger.tags=['Restaurant']
   try {
-    const {
-      name,
-      description,
-      phone_number,
-      opening_hours,
-      average_rating,
-      menu_id
-    } = req.body;
+    const { name, description, phone_number, opening_hours, average_rating, adress, locationlink } =
+      req.body;
 
     const restaurant = {
       name,
@@ -46,7 +43,8 @@ const createRestaurant = async (req, res) => {
       phone_number,
       opening_hours,
       average_rating,
-      menu_id
+      adress,
+      locationlink
     };
 
     const response = await mongodb.getDb().db().collection('restaurant').insertOne(restaurant);
@@ -61,6 +59,7 @@ const createRestaurant = async (req, res) => {
 };
 
 const updateRestaurant = async (req, res) => {
+  //#swagger.tags=['Restaurant']
   try {
     const restaurantId = new ObjectId(req.params.id);
 
@@ -71,7 +70,8 @@ const updateRestaurant = async (req, res) => {
       'phone_number',
       'opening_hours',
       'average_rating',
-      'menu_id'
+      'adress',
+      'locationlink'
     ];
     const missingFields = requiredFields.filter((field) => !(field in req.body));
     if (missingFields.length > 0) {
@@ -80,7 +80,8 @@ const updateRestaurant = async (req, res) => {
         .json({ error: `Missing required fields: ${missingFields.join(', ')}` });
     }
 
-    const { name, description, phone_number, opening_hours, average_rating, menu_id } = req.body;
+    const { name, description, phone_number, opening_hours, average_rating, adress, locationlink } =
+      req.body;
 
     const restaurant = {
       name,
@@ -88,7 +89,8 @@ const updateRestaurant = async (req, res) => {
       phone_number,
       opening_hours,
       average_rating,
-      menu_id
+      adress,
+      locationlink
     };
 
     const response = await mongodb
@@ -108,6 +110,7 @@ const updateRestaurant = async (req, res) => {
 };
 
 const deleteRestaurant = async (req, res) => {
+  //#swagger.tags=['Restaurant']
   try {
     const restaurantId = new ObjectId(req.params.id);
     const response = await mongodb

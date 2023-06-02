@@ -2,6 +2,7 @@
         "firstName": "John",
         "lastName": "Doe",
         "email": "johndoe@example.com",
-        "birthday": "1990-01-01"
+        "birthday": "1990-01-01",
+        "employee_level":"1,2,3"
 }
     

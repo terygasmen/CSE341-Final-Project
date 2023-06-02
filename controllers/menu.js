@@ -2,6 +2,7 @@ const mongodb = require('../db/connect');
 const ObjectId = require('mongodb').ObjectId;
 
 const getAllMenu = async (req, res) => {
+  //#swagger.tags=['Menu']
   try {
     const result = await mongodb.getDb().db().collection('menu').find();
     const lists = await result.toArray();
@@ -13,6 +14,7 @@ const getAllMenu = async (req, res) => {
 };
 
 const getSingleMenu = async (req, res) => {
+  //#swagger.tags=['Menu']
   try {
     const menuId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('menu').find({ _id: menuId });
@@ -29,17 +31,20 @@ const getSingleMenu = async (req, res) => {
 };
 
 const createMenu = async (req, res) => {
+  //#swagger.tags=['Menu']
   try {
     const { 
       name, 
       description, 
-      restaurant_id 
+      menu_id,
+      price 
     } = req.body;
 
     const menu = {
-      name,
-      description,
-      restaurant_id,
+      name, 
+      description, 
+      menu_id,
+      price
     };
 
     const response = await mongodb.getDb().db().collection('menu').insertOne(menu);
@@ -54,6 +59,7 @@ const createMenu = async (req, res) => {
 };
 
 const updateMenu = async (req, res) => {
+  //#swagger.tags=['Menu']
   try {
     const menuId = new ObjectId(req.params.id);
 
@@ -67,13 +73,15 @@ const updateMenu = async (req, res) => {
     const { 
       name, 
       description, 
-      restaurant_id 
+      menu_id,
+      price 
     } = req.body;
 
     const menu = {
-      name,
-      description,
-      restaurant_id,
+      name, 
+      description, 
+      menu_id,
+      price
     };
 
     const response = await mongodb.getDb().db().collection('menu').replaceOne({ _id: menuId }, menu);
