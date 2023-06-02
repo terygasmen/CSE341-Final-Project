@@ -95,7 +95,7 @@ const updateRestaurant = async (req, res) => {
       .getDb()
       .db()
       .collection('restaurant')
-      .replaceOne({ _id: userId }, restaurant);
+      .replaceOne({ _id: restaurantId }, restaurant);
 
     if (response.modifiedCount > 0) {
       res.status(204).json({});

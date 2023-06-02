@@ -1,4 +1,7 @@
+const { ObjectId } = require('mongodb');
 const mongodb = require('../db/connect');
+
+
 
 const getAll = async (req, res) => {
   //#swagger.tags=['Users']
@@ -7,9 +10,7 @@ const getAll = async (req, res) => {
     let lists = await result.toArray();
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists);
-  } catch (err) {
-    res.status(500).json(err);
-    res.status(200).json(users);
+ 
   } catch (error) {
     res.status(500).json(error.message || 'Some error occurred while retrieving users.');
   }
@@ -138,24 +139,13 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
   //#swagger.tags=['Users']
   try {
-  try {
     const userId = new ObjectId(req.params.id);
     const response = await mongodb
       .getDb()
       .db('restaurant')
       .collection('users')
       .deleteOne({ _id: userId }, true);
-    console.log(response);
-    if (response.deletedCount > 0) {
-      res.status(200).send();
-    } else {
-      res.status(500).json(response.error || 'Error occured while deleting contact.');
-    }
-  } catch (err) {
-    res.status(500).json(err);
-  }
-    const response = await mongodb.getDb().db().collection('user').deleteOne({ _id: userId }, true);
-    if (response.deletedCount > 0) {
+   if (response.deletedCount > 0) {
       res.status(204).send();
     } else {
       res.status(500).json('Some error occurred while deleting the user.');
@@ -167,10 +157,3 @@ const deleteUser = async (req, res) => {
 
 module.exports = { getAll, getOne, createUser, updateUser, deleteUser };
 
-module.exports = {
-  getAllUser,
-  getSingleUser,
-  deleteUser,
-  createUser,
-  updateUser,
-};
