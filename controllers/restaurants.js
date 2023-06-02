@@ -1,5 +1,5 @@
 const mongodb = require('../db/connect');
-const ObjectId = require('mongodb').ObjectId;
+const { ObjectId } = require('mongodb');
 
 const getAll = async (req, res) => {
   try {
@@ -17,6 +17,7 @@ const getSingle = async (req, res) => {
     const userId = new ObjectId(req.params.id);
     const result = await mongodb.getDb().db().collection('restaurant').find({ _id: userId });
     const lists = await result.toArray();
+
     if (lists.length > 0) {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(lists[0]);
@@ -30,14 +31,7 @@ const getSingle = async (req, res) => {
 
 const createRestaurant = async (req, res) => {
   try {
-    const {
-      name,
-      description,
-      phone_number,
-      opening_hours,
-      average_rating,
-      menu_id
-    } = req.body.restaurant;
+    const { name, description, phone_number, opening_hours, average_rating, menu_id } = req.body;
 
     const restaurant = {
       name,
@@ -64,20 +58,22 @@ const updateRestaurant = async (req, res) => {
     const userId = new ObjectId(req.params.id);
 
     // Validate the required fields
-    const requiredFields = ['name', 'description', 'phone_number', 'opening_hours', 'average_rating', 'menu_id'];
-    const missingFields = requiredFields.filter(field => !(field in req.body));
+    const requiredFields = [
+      'name',
+      'description',
+      'phone_number',
+      'opening_hours',
+      'average_rating',
+      'menu_id'
+    ];
+    const missingFields = requiredFields.filter((field) => !(field in req.body));
     if (missingFields.length > 0) {
-      return res.status(400).json({ error: `Missing required fields: ${missingFields.join(', ')}` });
+      return res
+        .status(400)
+        .json({ error: `Missing required fields: ${missingFields.join(', ')}` });
     }
 
-    const {
-      name,
-      description,
-      phone_number,
-      opening_hours,
-      average_rating,
-      menu_id
-    } = req.body;
+    const { name, description, phone_number, opening_hours, average_rating, menu_id } = req.body;
 
     const restaurant = {
       name,
@@ -88,10 +84,14 @@ const updateRestaurant = async (req, res) => {
       menu_id
     };
 
-    const response = await mongodb.getDb().db().collection('restaurant').replaceOne({ _id: userId }, restaurant);
+    const response = await mongodb
+      .getDb()
+      .db()
+      .collection('restaurant')
+      .replaceOne({ _id: userId }, restaurant);
 
     if (response.modifiedCount > 0) {
-      res.status(204).send();
+      res.status(204).json({});
     } else {
       res.status(500).json('Some error occurred while updating the restaurant.');
     }
@@ -103,14 +103,9 @@ const updateRestaurant = async (req, res) => {
 const deleteRestaurant = async (req, res) => {
   try {
     const userId = new ObjectId(req.params.id);
-    const response = await mongodb
-      .getDb()
-      .db()
-      .collection('restaurant')
-      .deleteOne({ _id: userId }, true);
-    console.log(response);
+    const response = await mongodb.getDb().db().collection('restaurant').deleteOne({ _id: userId });
     if (response.deletedCount > 0) {
-      res.status(204).send();
+      res.status(204).json({});
     } else {
       res.status(500).json('Some error occurred while deleting the restaurant.');
     }

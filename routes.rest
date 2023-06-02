@@ -3,15 +3,15 @@
 GET http://localhost:3000/restaurants
 
 ### Get restaurant by id
-GET http://localhost:3000/restaurants/646f79d0f3c0b6aa6b2be7b7
+GET http://localhost:3000/restaurants/6476b16c883e9dc66bbbcd8d
 
 ### Create restaurant
-POST http://localhost:3000/restaurants HTTP/1.1
+POST http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
 {
-        "name": "Restaurant 3",
-        "description": "Restaurant 3 Description",
+        "name": "Restaurant 9",
+        "description": "Restaurant 9 Description",
         "phone_number": "+12 345 6789",
         "opening_hours": "6am - 10pm",
         "average_rating": "5 stars",
@@ -20,17 +20,99 @@ content-type: application/json
 
 
 ### PUT restaurant
-PUT http://localhost:3000/restaurants/6470fac1bc382e628223c9a1 HTTP/1.1
+PUT http://localhost:3000/restaurants/6479a377f1a1e9ecec65308e HTTP/1.1
 content-type: application/json
 
 {
-        "name": "Restaurant 4",
-        "description": "Restaurant 4 Description",
+        "name": "Restaurant 19",
+        "description": "Restaurant 3 Description",
         "phone_number": "+12 345 6789",
         "opening_hours": "6am - 10pm",
-        "average_rating": "3 stars",
+        "average_rating": "13 stars",
         "menu_id": "646f79d0f3c0b6aa6b2be7b7"
 }
 
 ### DELETE restaurant
-DELETE http://localhost:3000/restaurants/6470fac1bc382e628223c9a1 HTTP/1.1
+DELETE http://localhost:3000/restaurants/6479a377f1a1e9ecec65308e HTTP/1.1
+
+
+### Get all menus
+GET http://localhost:3000/menu
+
+### Get single menu
+GET http://localhost:3000/menu/6479a543039518d63272c235
+
+### Create Menu
+POST http://localhost:3000/menu HTTP/1.1
+content-type: application/json
+
+{
+        "menu": {
+        "name": "test menu 1",
+        "description": "Restaurant 9 Description",
+        "price": 3000,
+        "cost": 2000,
+        "average_rating": "5 stars",
+        "menu_id": "646f7a47f3c0b6aa6b2be7b9"
+}}
+
+
+### PUT menu
+PUT http://localhost:3000/menu/6479a543039518d63272c235 HTTP/1.1
+content-type: application/json
+
+{
+        "name": "test modify menu",
+        "description": "Restaurant 9 Description",
+        "price": 3000,
+        "cost": 2000,
+        "average_rating": "5 stars",
+        "menu_id": "646f7a47f3c0b6aa6b2be7b9"
+}
+
+
+
+### DELETE menu
+DELETE http://localhost:3000/menu/6479a543039518d63272c235 HTTP/1.1
+
+
+
+### Get all Users
+GET http://localhost:3000/users
+
+### Get single User
+GET http://localhost:3000/users/6479a543039518d63272c235
+
+### Create User
+POST http://localhost:3000/users HTTP/1.1
+content-type: application/json
+
+{
+        "menu": {
+        "name": "test menu 1",
+        "description": "Restaurant 9 Description",
+        "price": 3000,
+        "cost": 2000,
+        "average_rating": "5 stars",
+        "menu_id": "646f7a47f3c0b6aa6b2be7b9"
+}}
+
+
+### Update User
+PUT http://localhost:3000/users/6479a543039518d63272c235 HTTP/1.1
+content-type: application/json
+
+{
+        "name": "test modify menu",
+        "description": "Restaurant 9 Description",
+        "price": 3000,
+        "cost": 2000,
+        "average_rating": "5 stars",
+        "menu_id": "646f7a47f3c0b6aa6b2be7b9"
+}
+
+
+
+### DELETE Users
+DELETE http://localhost:3000/users/6479a543039518d63272c235 HTTP/1.1
+

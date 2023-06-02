@@ -4,12 +4,12 @@ const menuController = require('../controllers/menu')
 
 router.get('/',menuController.getAll);
 
-router.get('/id',menuController.getSingle);
+router.get('/:id',menuController.getSingle);
 
 router.post('/',menuController.createMenu);
 
-router.put('/id',menuController.updateMenu);
+router.put('/:id',menuController.updateMenu);
 
-router.delete('/id',menuController.deleteMenu);
+router.delete('/:id',menuController.deleteMenu);
 
 module.exports = router
