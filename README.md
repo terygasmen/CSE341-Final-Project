@@ -49,8 +49,8 @@ type npm start
 
 
 ## Project Status
--deployed @   https://web-service-final341.onrender.com/   
--api documentation and testing  @ https://web-service-final341.onrender.com/api-docs   
-### Project is: In development
+-deployed @   https://restaurant-f4ry.onrender.com/     
+-api documentation and testing  @ https://restaurant-f4ry.onrender.com/api-docs     
+### Project is: In development  
 
 
