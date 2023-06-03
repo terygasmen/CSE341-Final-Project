@@ -36,7 +36,8 @@ Operations RESTApi for small to medium restaurant size.This cover stock manageme
     "nodemon": "^2.0.22",  
     "prettier": "^2.5.1",  
     "supertest": "^6.3.3",  
-    "swagger-autogen": "^2.19.0"  
+    "swagger-autogen": "^2.19.0",  
+    "cors": "^2.8.5",    
   }    
 
     

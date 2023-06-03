@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongodb = require('./db/connect');
-
+const cors = require('cors')
 const dotenv = require('dotenv');
 dotenv.config();
 const swaggerUi = require('swagger-ui-express');
@@ -14,7 +14,8 @@ const app = express();
 const session = require("express-session");
 const passport = require("passport");
 
-//Oauth
+// Enable CORS for all routes
+app.use(cors());
 //Oauth
 const passportSetUp = require("./services/passport");
 const authCheck = require("./services/authCheck");
