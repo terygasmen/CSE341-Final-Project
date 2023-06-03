@@ -1,16 +1,13 @@
 const { ObjectId } = require('mongodb');
 const mongodb = require('../db/connect');
 
-
-
 const getAll = async (req, res) => {
   //#swagger.tags=['Users']
   try {
-    const result = await mongodb.getDb().db('users').collection('users').find();
+    const result = await mongodb.getDb().db().collection('users').find();
     let lists = await result.toArray();
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists);
- 
   } catch (error) {
     res.status(500).json(error.message || 'Some error occurred while retrieving users.');
   }
@@ -20,7 +17,7 @@ const getOne = async (req, res) => {
   //#swagger.tags=['Users']
   try {
     const userId = new ObjectId(req.params.id);
-    const result = await mongodb.getDb().db('users').collection('users').find({ _id: userId });
+    const result = await mongodb.getDb().db().collection('users').find({ _id: userId });
     result.toArray().then((lists) => {
       res.setHeader('Content-Type', 'application/json');
       res.status(200).json(lists[0]);
@@ -40,7 +37,7 @@ const createUser = async (req, res) => {
       birthday: req.body.birthday,
       employee_level: req.body.employee_level
     };
-    const response = await mongodb.getDb().db('users').collection('users').insertOne(contact);
+    const response = await mongodb.getDb().db().collection('users').insertOne(contact);
     if (response.acknowledged) {
       res.status(201).json(response);
     } else {
@@ -50,19 +47,13 @@ const createUser = async (req, res) => {
     res.status(500).json(err);
   }
   try {
-    const { 
-      firstName, 
-      lastName, 
-      email, 
-      birthday ,
-      employee_level
-    } = req.body;
+    const { firstName, lastName, email, birthday, employee_level } = req.body;
 
     const user = {
-      firstName, 
-      lastName, 
-      email, 
-      birthday ,
+      firstName,
+      lastName,
+      email,
+      birthday,
       employee_level
     };
 
@@ -90,7 +81,7 @@ const updateUser = async (req, res) => {
     };
     const response = await mongodb
       .getDb()
-      .db('restaurant')
+      .db()
       .collection('users')
       .replaceOne({ _id: userId }, contact);
     console.log(response);
@@ -107,28 +98,28 @@ const updateUser = async (req, res) => {
 
     // Validate the required fields
     const requiredFields = ['firstName', 'lastName', 'email', 'birthday'];
-    const missingFields = requiredFields.filter(field => !(field in req.body));
+    const missingFields = requiredFields.filter((field) => !(field in req.body));
     if (missingFields.length > 0) {
-      return res.status(400).json({ error: `Missing required fields: ${missingFields.join(', ')}` });
+      return res
+        .status(400)
+        .json({ error: `Missing required fields: ${missingFields.join(', ')}` });
     }
 
-    const { 
-      firstName, 
-      lastName, 
-      email, 
-      birthday ,
-      employee_level
-    } = req.body;
+    const { firstName, lastName, email, birthday, employee_level } = req.body;
 
     const user = {
-      firstName, 
-      lastName, 
-      email, 
-      birthday ,
+      firstName,
+      lastName,
+      email,
+      birthday,
       employee_level
     };
 
-    const response = await mongodb.getDb().db().collection('user').replaceOne({ _id: userId }, user);
+    const response = await mongodb
+      .getDb()
+      .db()
+      .collection('user')
+      .replaceOne({ _id: userId }, user);
 
     if (response.modifiedCount > 0) {
       res.status(204).send();
@@ -146,10 +137,10 @@ const deleteUser = async (req, res) => {
     const userId = new ObjectId(req.params.id);
     const response = await mongodb
       .getDb()
-      .db('restaurant')
+      .db()
       .collection('users')
       .deleteOne({ _id: userId }, true);
-   if (response.deletedCount > 0) {
+    if (response.deletedCount > 0) {
       res.status(204).send();
     } else {
       res.status(500).json('Some error occurred while deleting the user.');
@@ -160,4 +151,3 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = { getAll, getOne, createUser, updateUser, deleteUser };
-
